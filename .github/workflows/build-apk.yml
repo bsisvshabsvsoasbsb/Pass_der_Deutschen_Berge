@@ -2,7 +2,10 @@ name: APK bauen
 
 on:
   push:
-    branches: [claude/android-app-multilingual-map-la76fe, main]
+    branches:
+      - main
+      - claude/android-app-multilingual-map-la76fe
+      - 'dev/**'          # persoenliche Arbeitszweige
     paths-ignore: ['**.md', '.github/workflows/probe-versions.yml']
   pull_request:
   workflow_dispatch:
@@ -138,8 +141,14 @@ jobs:
 
       # Ein Release-Asset laesst sich direkt auf dem Telefon herunterladen;
       # Actions-Artefakte sind ZIP-Dateien hinter der GitHub-Anmeldung.
+      # Nur vom Integrationszweig. Wuerden auch die persoenlichen Zweige
+      # veroeffentlichen, ueberschriebe sich das Release "app-latest"
+      # gegenseitig und niemand wuesste, wessen Stand darin liegt.
       - name: APK als Release veroeffentlichen
-        if: ${{ success() && github.event_name == 'push' }}
+        if: >-
+          ${{ success() && github.event_name == 'push' &&
+              (github.ref_name == 'main' ||
+               github.ref_name == 'claude/android-app-multilingual-map-la76fe') }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
