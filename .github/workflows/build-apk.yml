@@ -41,8 +41,25 @@ jobs:
           echo "ANDROID_HOME=$ANDROID_HOME"
           yes 2>/dev/null | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
-            "platforms;android-36" "build-tools;36.0.0" > /dev/null
+            "platforms;android-37.2" "build-tools;37.0.0" > /dev/null || true
           ls "$ANDROID_HOME/platforms"
+
+      # Diagnose: welche compileSdk-Eigenschaften kennt diese AGP-Version?
+      # Die Minor-Version-DSL ist noch jung, ihr Name aendert sich zwischen
+      # AGP-Linien - hier steht er schwarz auf weiss.
+      - name: AGP-DSL pruefen
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          JAR=$(find ~/.gradle/caches -name 'gradle-api-*.jar' -o -name 'common-*.jar' 2>/dev/null | head -3)
+          echo "gefundene AGP-Jars: $JAR"
+          for j in $(find ~/.gradle/caches -path '*com.android.tools.build*' -name '*.jar' 2>/dev/null | head -40); do
+            if unzip -l "$j" 2>/dev/null | grep -q 'CommonExtension'; then
+              echo "== $j"
+              unzip -p "$j" 'com/android/build/api/dsl/CommonExtension.class' 2>/dev/null \
+                | strings | grep -iE 'compileSdk[A-Za-z]*' | sort -u | head -20
+            fi
+          done
 
       - name: Unit-Tests
         run: ./gradlew --no-daemon --stacktrace testDebugUnitTest
@@ -82,7 +99,7 @@ jobs:
         run: |
           set -euo pipefail
           APK=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
-          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify -v --print-certs "$APK"
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify -v --print-certs "$APK"
 
       - name: Keystore entfernen
         if: always()

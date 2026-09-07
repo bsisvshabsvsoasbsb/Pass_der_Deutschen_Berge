@@ -19,7 +19,10 @@ fun signingValue(name: String): String? =
 
 android {
     namespace = "de.passderdeutschenberge"
-    compileSdk = 36
+    // androidx.core 1.19 und lifecycle 2.11 verlangen laut AAR-Metadaten
+    // compileSdk 37. API 37 wird nur mit Minor-Version ausgeliefert.
+    compileSdk = 37
+    compileSdkMinor = 2
 
     defaultConfig {
         applicationId = "de.passderdeutschenberge"
