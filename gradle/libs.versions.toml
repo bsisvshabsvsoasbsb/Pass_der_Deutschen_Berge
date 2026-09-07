@@ -3,7 +3,7 @@
 [versions]
 agp = "9.4.0"
 kotlin = "2.4.10"
-composeBom = "2026.08.00"
+composeBom = "2026.06.01"   # -> compose-ui 1.11.4, material3 1.4.0 (im Probe-Lauf verifiziert)
 activityCompose = "1.13.0"
 appcompat = "1.8.0"
 coreKtx = "1.19.0"

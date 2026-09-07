@@ -19,7 +19,7 @@ fun signingValue(name: String): String? =
 
 android {
     namespace = "de.passderdeutschenberge"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "de.passderdeutschenberge"

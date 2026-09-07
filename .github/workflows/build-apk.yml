@@ -33,13 +33,15 @@ jobs:
       - name: Gradle einrichten
         uses: gradle/actions/setup-gradle@v4
 
+      # API 37 liegt auf dem Runner nur mit Minor-Version vor
+      # (android-37.0/.1/.2); dieses Projekt baut deshalb gegen 36.
       - name: Android SDK bereitstellen
         run: |
           set -euo pipefail
           echo "ANDROID_HOME=$ANDROID_HOME"
           yes 2>/dev/null | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
-            "platforms;android-37" "build-tools;37.0.0" > /dev/null
+            "platforms;android-36" "build-tools;36.0.0" > /dev/null
           ls "$ANDROID_HOME/platforms"
 
       - name: Unit-Tests
@@ -80,7 +82,7 @@ jobs:
         run: |
           set -euo pipefail
           APK=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
-          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify -v --print-certs "$APK"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify -v --print-certs "$APK"
 
       - name: Keystore entfernen
         if: always()
