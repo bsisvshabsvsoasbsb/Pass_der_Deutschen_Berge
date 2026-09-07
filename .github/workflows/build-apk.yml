@@ -1,0 +1,101 @@
+name: APK bauen
+
+on:
+  push:
+    branches: [claude/android-app-multilingual-map-la76fe, main]
+    paths-ignore: ['**.md', '.github/workflows/probe-versions.yml']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 21 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Android SDK bereitstellen
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          yes 2>/dev/null | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platforms;android-37" "build-tools;37.0.0" > /dev/null
+          ls "$ANDROID_HOME/platforms"
+
+      - name: Unit-Tests
+        run: ./gradlew --no-daemon --stacktrace testDebugUnitTest
+
+      - name: Lint (bricht bei fehlenden Uebersetzungen)
+        run: ./gradlew --no-daemon lintDebug
+
+      - name: Debug-APK bauen
+        run: ./gradlew --no-daemon --stacktrace assembleDebug
+
+      # Release wird nur signiert gebaut, wenn ein eigener Keystore als Secret
+      # hinterlegt ist. Ohne Secrets bleibt es beim Debug-APK - das laesst sich
+      # ebenfalls per Sideload installieren, taugt aber nicht fuer Updates,
+      # weil der Debug-Schluessel je Build-Maschine ein anderer ist.
+      - name: Keystore aus Secret entpacken
+        id: keystore
+        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$KEYSTORE_BASE64" | base64 -d > "${RUNNER_TEMP}/release.jks"
+          test -s "${RUNNER_TEMP}/release.jks"
+          echo "available=true" >> "$GITHUB_OUTPUT"
+
+      - name: Signiertes Release-APK bauen
+        if: ${{ steps.keystore.outputs.available == 'true' }}
+        env:
+          ORG_GRADLE_PROJECT_storeFile: ${{ runner.temp }}/release.jks
+          ORG_GRADLE_PROJECT_storePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          ORG_GRADLE_PROJECT_keyAlias: ${{ secrets.KEY_ALIAS }}
+          ORG_GRADLE_PROJECT_keyPassword: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew --no-daemon --stacktrace assembleRelease
+
+      - name: Signatur pruefen
+        if: ${{ steps.keystore.outputs.available == 'true' }}
+        run: |
+          set -euo pipefail
+          APK=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify -v --print-certs "$APK"
+
+      - name: Keystore entfernen
+        if: always()
+        run: rm -f "${RUNNER_TEMP}/release.jks"
+
+      - name: APK als Artefakt anhaengen
+        uses: actions/upload-artifact@v4
+        with:
+          name: pass-der-deutschen-berge-apk
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Testberichte bei Fehlschlag anhaengen
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports
+          path: |
+            app/build/reports/**
+            app/build/outputs/logs/**
+          retention-days: 7

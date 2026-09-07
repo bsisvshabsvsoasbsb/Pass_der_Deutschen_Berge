@@ -1,0 +1,61 @@
+# slug<TAB>polnische Uebersetzung des Charaktertexts der Grossregion.
+# Der deutsche Text wird aus pass_data.json gezogen, hier steht nur die
+# Uebersetzung. Geografische Eigennamen bleiben in der deutschen Form,
+# weil die Listen- und Detailansichten dieselben Namen anzeigen.
+overath-bergisches-land	Lesiste wzniesienia, doliny potoków, zapory wodne i dawne osady górnicze kształtują Bergisches Land wokół Overath.
+siebengebirge-bonn-rhein-sieg	Wulkaniczne pasmo Siebengebirge wznosi się bezpośrednio z doliny Renu i łączy krótkie wyjścia szczytowe z zamkami, klasztorami i widokami na Ren.
+nordeifel-nationalpark-eifel	Nordeifel łączy lasy bukowe, wysoczyzny, zbiorniki zaporowe i historyczne miejscowości z krajobrazami Parku Narodowego Eifel.
+ahrtal-ahrgebirge	Strome zbocza skalne, winnice, ruiny zamków i wąskie zakola rzeki nadają dolinie Ahr jej wyrazisty charakter.
+osteifel-laacher-see-hohe-eifel	Wulkanizm, kamieniołomy bazaltu i lawy, krajobrazy kraterowe oraz zamki określają Osteifel wokół jeziora Laacher See, Mayen i Hohe Eifel.
+westerwald-siegerland	Westerwald i Siegerland łączą zalesione grzbiety z bazaltem, krasem, dawnymi osadami górniczymi i rozległymi widokami.
+sauerland-rothaargebirge	Sauerland i Rothaargebirge tworzą wydłużone grzbiety leśne, wysoko położone wrzosowiska, zapory wodne i liczne wieże widokowe.
+teutoburger-wald-egge-weserbergland	Długie grzbiety, piaskowcowe skały i historyczne zamki kształtują Teutoburger Wald, Eggegebirge i Weserbergland.
+mittelrhein-koblenz-loreley	Dolina Mittelrhein łączy strome winnice, skalne ambony widokowe i wyjątkowo gęstą sieć zamków.
+untermosel	Untermosel charakteryzuje się wąskimi zakolami rzeki, tarasowymi winnicami, skalnymi ścieżkami i licznymi zamkami nad doliną.
+vulkaneifel	Jeziora maarowe, stożki wulkaniczne, skały dolomitowe i głębokie doliny czynią z Vulkaneifel jeden z najbardziej zróżnicowanych geologicznie krajobrazów średniogórskich Niemiec.
+hunsrueck	Hunsrück to lesista wyżyna z długimi grzbietami, głęboko wciętymi dolinami potoków, skałami oraz śladami celtyckimi i średniowiecznymi.
+taunus-rheingau	Taunus wznosi się nad regionem Ren-Men; wysoczyzny, skały kwarcytowe, rzymskie kastele i zamki przechodzą na południu w winnice Rheingau.
+lahntal-mittelhessen	Lahntal i Mittelhessen łączą zalesione wzniesienia z zakolami rzeki, miastami o zabudowie szachulcowej oraz szczególnie gęstą siecią zamków i pałaców.
+mittelmosel	Nad Mittelmosel strome winnice, punkty widokowe, ruiny zamków i historyczne miejscowości winiarskie przeplatają się wzdłuż szerokich zakoli Mozeli.
+obermosel-trier	Obermosel i Trier łączą rzymskie dziedzictwo kulturowe ze skałami wapienia muszlowego, krajobrazami winiarskimi i przejściem ku Saarze i Luksemburgowi.
+saarland	Saarland oferuje skały z piaskowca pstrego, leśne ścieżki, jaskinie, zabytki przemysłowe oraz słynne zakole Saary.
+nordhessen-kellerwald-habichtswald	Nordhessen łączy stare lasy bukowe, bazaltowe i piaskowcowe wzniesienia, zbiorniki zaporowe oraz krajobraz zamkowy krainy braci Grimm.
+vogelsberg	Vogelsberg to rozległe wulkaniczne średniogórze z bazaltowymi kopami, źródłami, wysoczyznami i szerokimi widokami.
+rhoen	Otwarte wysoczyzny, bazaltowe kopy, torfowiska i rozległe widoki wyróżniają Rhön jako krainę otwartych przestrzeni.
+pfaelzerwald-dahner-felsenland	Skały z piaskowca pstrego, zamki skalne i bezkresne lasy kształtują Pfälzerwald, a zwłaszcza Dahner Felsenland.
+odenwald-bergstrasse	Odenwald łączy zalesione wzniesienia, skały granitowe i piaskowcowe, wąwozy oraz łańcuch historycznych zamków wzdłuż Bergstraße.
+spessart	Spessart to gęsto zalesione średniogórze z głębokimi dolinami, dawnymi szlakami handlowymi, zamkami i odludnymi lasami naturalnymi.
+lueneburger-heide	Wrzosowiska, jałowce, torfowiska i łagodne polodowcowe wzgórza tworzą Lüneburger Heide wokół Wilsede i Schneverdingen.
+harz	Harz to najwyższe średniogórze północnych Niemiec, łączące granitowe turnie, torfowiska wysokie, historię górnictwa, jaskinie i głębokie doliny.
+thueringer-wald-eisenach	Thüringer Wald łączy szlak Rennsteig z zalesionymi szczytami, skalnymi wąwozami, zamkami oraz uzdrowiskami i miasteczkami górskimi o długiej tradycji.
+hainich-eichsfeld-kyffhaeuser	Lasy bukowe, wzniesienia z wapienia muszlowego, zamki i zjawiska krasowe łączą Hainich, Eichsfeld i Kyffhäuser.
+saale-unstrut-thueringer-becken	Doliny rzeczne, wapienne zbocza, zamki, winnice i otwarte wysoczyzny kształtują Saale-Unstrut i Thüringer Becken.
+frankenwald	Frankenwald to lesiste góry łupkowe z cichymi dolinami, wzniesieniami widokowymi oraz historycznymi miejscowościami granicznymi i warownymi.
+fichtelgebirge	Granitowe skały, źródła, ruiny zamków i zwarte grupy szczytów kształtują Fichtelgebirge.
+fraenkische-schweiz	Fränkische Schweiz to krajobraz krasowy pełen skalnych turni, jaskiń, zamków i wąskich dolin rzeki Wiesent.
+franken-altmuehltal-bayerischer-jura	Bayerischer Jura i Altmühltal łączą wapienne skały, jaskinie, zamki oraz doliny rzek Altmühl i Dunaju.
+schwaebische-alb-nord-west	Schwäbische Alb to wyrazista krasowa wysoczyzna z progiem krawędziowym, zamkami, źródłami, wodospadami i wyjątkowo bogatym światem jaskiń.
+schwaebische-alb-sued-donautal	Na południu Schwäbische Alb Dunaj i jego dopływy wcinają głębokie doliny między wapienne skały, jaskinie i spektakularne punkty widokowe.
+nordschwarzwald	Nordschwarzwald łączy torfowiska wysokie, zalesione wzniesienia, skały z piaskowca pstrego, wodospady oraz historyczne uzdrowiska i zamki.
+mittlerer-schwarzwald	W Mittlerer Schwarzwald przeplatają się głębokie doliny, wodospady, krajobrazy rolnicze i historyczne zamki.
+suedschwarzwald	Südschwarzwald łączy najwyższe szczyty Schwarzwaldu z głębokimi wąwozami, wodospadami, jeziorami i rozległymi widokami na Alpy.
+bodensee-hegau	Hegau to kraina wygasłych wulkanów; nad Jeziorem Bodeńskim dochodzą do tego zamki, pałace i szerokie panoramy jeziora.
+erzgebirge	Erzgebirge łączy wydłużone partie grzbietowe, historię górnictwa, skały bazaltowe i granitowe oraz miasta górnicze o długiej tradycji.
+saechsische-schweiz	Góry stołowe, piaskowcowe turnie, skalne rafy i wąskie wąwozy czynią Sächsische Schweiz jednym z najbardziej spektakularnych krajobrazów skalnych Niemiec.
+dresden-elbland	Elbland wokół Drezna i Miśni łączy winnice, pałace, historyczne miasta i rozległe krajobrazy nadrzeczne.
+vogtland-oberlausitz-zittauer-gebirge	Od Vogtlandu po Oberlausitz przeplatają się grzbiety średniogórskie, piaskowcowe skały, budowle mostowe i historyczne ośrodki kultury.
+bayerischer-wald	Bayerischer Wald to rozciągnięte góry leśne z rumowiskami skalnymi, pozostałościami puszczy, jeziorami i szczytami wzdłuż granicy z Czechami.
+allgaeuer-alpen	Allgäuer Alpen łączą trawiaste szczyty przedalpejskie, strome góry wapienne, głębokie wąwozy i jeziora wokół Oberstdorfu i Ostallgäu.
+ammergauer-alpen-fuessen	Ammergauer Alpen łączą wapienne szczyty, wąwozy i jeziora z zamkami królewskimi wokół Füssen i Linderhof.
+wetterstein-garmisch	Wetterstein wokół Garmisch-Partenkirchen łączy najwyższe szczyty Niemiec z wąwozami, wysokogórskimi dolinami i kulturą alpejską.
+karwendel-estergebirge	Karwendel i Estergebirge łączą strome ściany wapienne, alpejskie doliny, jeziora i długie szlaki grzbietowe.
+bayerische-voralpen-tegernsee-walchensee	Bayerische Voralpen łączą widokowe szczyty z dużymi jeziorami, halami, wąwozami i miejscowościami o długiej tradycji.
+chiemgauer-alpen	Chiemgauer Alpen to zielone góry przedalpejskie z wyrazistymi skalnymi szczytami, halami i jeziorem Chiemsee na północy.
+berchtesgadener-alpen	Berchtesgadener Alpen należą do najbardziej imponujących krajobrazów wysokogórskich Niemiec: masywy wapienne, Königssee, wąwozy i wielkie wodospady leżą tu blisko siebie.
+brandenburg-flaeming-spreewald	Brandenburgia zaskakuje łagodnymi wzniesieniami Fläming, polodowcowymi wąwozami, zamkami, krajobrazami jeziornymi i drogami wodnymi Spreewaldu.
+berlin-potsdam	Berlin i Poczdam łączą historię wielkiego miasta z rozległymi parkami i jeziorami, pałacami oraz zalesionymi wzniesieniami nad Hawelą.
+mecklenburgische-seenplatte	Jeziora, lasy bukowe, torfowiska i historyczne dwory określają Mecklenburgische Seenplatte i okolice Müritz.
+schleswig-holstein-holsteinische-schweiz	Holsteinische Schweiz to łagodny polodowcowy krajobraz pagórkowaty z jeziorami, punktami widokowymi i pałacami.
+ruegen-jasmund-ostseekueste	Klify kredowe, lasy bukowe, strome wybrzeża i kurorty nadmorskie kształtują Rugię i wybrzeże Bałtyku.
+nordseekueste-inseln	Morze Wattowe, wydmy, klify i wyspowe wzniesienia tworzą charakterystyczne atrakcje przyrodnicze niemieckiego wybrzeża Morza Północnego.
+sammlungen-herausforderungen	Te strony zbierają ponadregionalne wyzwania i kolekcje dla wszystkich, którzy chcą systematycznie odkrywać Niemcy.

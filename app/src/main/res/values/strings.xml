@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Standardsprache = Deutsch. Polnisch liegt in values-pl/strings.xml.
+     Die Charaktertexte der Grossregionen (char_*) werden von
+     tools/gen_strings.py aus pass_data.json bzw. tools/i18n/macro_character.tsv
+     erzeugt und unten angehaengt. -->
+<resources>
+    <string name="app_name">Pass der Deutschen Berge</string>
+
+    <!-- Navigation -->
+    <string name="tab_map">Karte</string>
+    <string name="tab_regions">Regionen</string>
+    <string name="tab_summits">Gipfel</string>
+    <string name="tab_collections">Sammlungen</string>
+    <string name="tab_progress">Fortschritt</string>
+    <string name="action_back">Zurück</string>
+
+    <!-- Abschnitte -->
+    <string name="section_landscape">Landschaft &amp; Charakter</string>
+    <string name="section_about_region">Über die Region</string>
+    <string name="section_about_summit">Über den Gipfel</string>
+    <string name="section_key_summits">Wichtige Gipfel</string>
+    <string name="section_discovery_regions">Entdeckungsregionen</string>
+    <string name="section_mountains_in_region">Berge in dieser Region</string>
+    <string name="section_nearby">Wenn du schon mal hier bist …</string>
+    <string name="section_notes">Notizen</string>
+    <string name="section_tour">Meine Tour</string>
+    <string name="no_own_summit_page">Keine eigene Gipfelseite – hier stehen die regionalen Ziele im Mittelpunkt.</string>
+
+    <!-- Zielkategorien -->
+    <string name="cat_summit">Gipfel</string>
+    <string name="cat_pass">Pass / Grat</string>
+    <string name="cat_water">Wasser, Quellen &amp; Wasserfälle</string>
+    <string name="cat_rock">Felsen &amp; Höhlen</string>
+    <string name="cat_nature">Natur &amp; Aussicht</string>
+    <string name="cat_castle">Burgen, Schlösser &amp; Kultur</string>
+    <string name="cat_trail">Wege &amp; Erlebnisse</string>
+    <string name="cat_collection">Sammlungsziele</string>
+
+    <!-- Bausteine der Regionsbeschreibung -->
+    <string name="focus_castle">Burgen, Schlösser und Kulturorte</string>
+    <string name="focus_water">Seen, Quellen und Wasserfälle</string>
+    <string name="focus_nature">Natur- und Aussichtspunkte</string>
+    <string name="focus_rock">Felsen und Höhlen</string>
+    <string name="focus_trail">Wanderwege und Herausforderungen</string>
+    <string name="focus_mixed">abwechslungsreiche Natur- und Kulturziele</string>
+    <string name="list_and">und</string>
+
+    <!-- Satzschablonen. Der Quelltext des Passes ist schablonenhaft erzeugt;
+         die Beschreibungen werden daraus zur Laufzeit sprachrichtig gesetzt. -->
+    <string name="tpl_summit_intro">%1$s liegt in der Tourengruppe %2$s.</string>
+    <string name="tpl_summit_elevation">Der Gipfel erreicht %1$s.</string>
+    <string name="tpl_summit_nearby">Besonders gut lässt sich die Tour mit %1$s verbinden.</string>
+    <string name="tpl_summit_outro">Je nach Ausgangspunkt kann die Besteigung als kurze Gipfeltour oder als Teil einer längeren Rundwanderung geplant werden.</string>
+    <string name="tpl_region_focus">In der Tourengruppe %1$s stehen %2$s im Mittelpunkt.</string>
+    <string name="tpl_region_top">Zu den markanten Zielen gehören %1$s.</string>
+    <string name="tpl_region_peaks">Die wichtigsten Gipfel sind %1$s.</string>
+    <string name="tpl_collection">Diese Spezial-Sammlung bündelt ausgewählte Ziele aus dem gesamten Pass.</string>
+    <string name="tpl_collection_top">Zu den enthaltenen Zielen gehören %1$s.</string>
+
+    <!-- Gipfelformular -->
+    <string name="form_date">Datum der Besteigung</string>
+    <string name="form_start">Startpunkt</string>
+    <string name="form_route">AllTrails – Name der Route</string>
+    <string name="form_distance">Distanz</string>
+    <string name="form_time">Zeit</string>
+    <string name="form_elevation_gain">Höhenmeter +</string>
+    <string name="form_rating">Meine Bewertung</string>
+    <string name="form_notes">Notizen</string>
+    <string name="form_hint_notes">Eigene Notizen …</string>
+    <string name="visit_date">Besuchsdatum</string>
+    <string name="set_today">Heute</string>
+    <string name="clear_date">Datum löschen</string>
+    <string name="rating_value">%1$d von 5</string>
+    <string name="not_rated">Nicht bewertet</string>
+
+    <!-- Karte -->
+    <string name="map_title">Deutschland</string>
+    <string name="map_reset">Ansicht zurücksetzen</string>
+    <string name="map_hint">Ziehen zum Verschieben, zwei Finger zum Zoomen. Auf einen Punkt tippen, um die Großregion zu öffnen.</string>
+    <string name="map_approximate">Die Marker zeigen die ungefähre Lage der Gebiete. Der Pass enthält keine exakten Koordinaten.</string>
+    <string name="map_legend_done">vollständig</string>
+    <string name="map_legend_partial">begonnen</string>
+    <string name="map_legend_open">offen</string>
+    <string name="map_selected_none">Kein Gebiet ausgewählt</string>
+
+    <!-- Übersichten und Listen -->
+    <string name="overview_macro_regions">Großregionen</string>
+    <string name="overview_intro">Der Pass ist nach der Reiseentfernung von Overath aufgebaut: nahe Gebiete zuerst, danach Schritt für Schritt weiter durch Deutschland.</string>
+    <string name="search_hint">Suchen …</string>
+    <string name="no_results">Keine Treffer</string>
+    <string name="filter_all">Alle</string>
+    <string name="filter_open">Offen</string>
+    <string name="filter_done">Erledigt</string>
+    <string name="sort_label">Sortierung</string>
+    <string name="sort_pass_order">Pass-Reihenfolge</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_elevation">Höhe</string>
+    <string name="elevation_format">%1$s m</string>
+    <string name="elevation_unknown">Höhe nicht angegeben</string>
+    <string name="page_reference">S. %1$d</string>
+    <string name="source_page">Quelle: S. %1$d</string>
+
+    <!-- Fortschritt -->
+    <string name="progress_title">Mein Fortschritt</string>
+    <string name="progress_summits">Gipfel</string>
+    <string name="progress_targets">Ziele</string>
+    <string name="progress_regions">Regionen abgeschlossen</string>
+    <string name="progress_macro_regions">Großregionen abgeschlossen</string>
+    <string name="progress_percent">%1$d %%</string>
+    <string name="progress_of">%1$d von %2$d</string>
+    <plurals name="summits_climbed">
+        <item quantity="one">%d Gipfel bestiegen</item>
+        <item quantity="other">%d Gipfel bestiegen</item>
+    </plurals>
+    <plurals name="targets_visited">
+        <item quantity="one">%d Ziel besucht</item>
+        <item quantity="other">%d Ziele besucht</item>
+    </plurals>
+    <plurals name="regions_count">
+        <item quantity="one">%d Region</item>
+        <item quantity="other">%d Regionen</item>
+    </plurals>
+    <plurals name="summits_count">
+        <item quantity="one">%d Gipfel</item>
+        <item quantity="other">%d Gipfel</item>
+    </plurals>
+    <plurals name="targets_count">
+        <item quantity="one">%d Ziel</item>
+        <item quantity="other">%d Ziele</item>
+    </plurals>
+
+    <!-- Einstellungen und Info -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_language">Sprache</string>
+    <string name="language_system">Systemsprache</string>
+    <string name="language_de">Deutsch</string>
+    <string name="language_pl">Polnisch</string>
+    <string name="settings_reset">Fortschritt zurücksetzen</string>
+    <string name="settings_reset_confirm">Wirklich den gesamten Fortschritt löschen? Das lässt sich nicht rückgängig machen.</string>
+    <string name="action_delete">Löschen</string>
+    <string name="action_cancel">Abbrechen</string>
+    <string name="about_title">Über den Pass</string>
+    <string name="about_stats">%1$d Ziele · %2$d Gipfel · %3$d Entdeckungsregionen</string>
+    <string name="about_sources_title">Recherchebasis</string>
+    <string name="about_sources">Die Auswahl kombiniert die bestehende Pass-Datenbank mit einer deutschlandweiten Erweiterung. Als Recherchebasis dienten vor allem offizielle Tourismus- und Regionalportale; der Pass ist als persönliche Entdecker-Checkliste gedacht, nicht als amtliches Verzeichnis aller Sehenswürdigkeiten.</string>
+    <string name="about_disclaimer">Öffnungszeiten, Wegsperrungen, Höhlenzugang und saisonale Bedingungen können sich ändern. Vor einer Tour bitte die jeweilige offizielle Ziel- oder Regionsseite prüfen.</string>
+    <string name="about_map_data">Kartengeometrie: Natural Earth (gemeinfrei). Gebietspositionen sind kuratierte Näherungswerte.</string>
+
+    <!-- Barrierefreiheit -->
+    <string name="cd_checked">Erledigt</string>
+    <string name="cd_unchecked">Offen</string>
+    <string name="cd_open_details">Details öffnen</string>
+    <string name="cd_map">Karte von Deutschland mit den Gebieten des Passes</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Geraete vor Android 8 kennen keine adaptiven Icons und nutzen dieses
+         statische Icon; ab API 26 greift mipmap-anydpi-v26/ic_launcher.xml. -->
+    <item type="mipmap" name="ic_launcher">@drawable/ic_launcher_legacy</item>
+    <item type="mipmap" name="ic_launcher_round">@drawable/ic_launcher_legacy</item>
+</resources>

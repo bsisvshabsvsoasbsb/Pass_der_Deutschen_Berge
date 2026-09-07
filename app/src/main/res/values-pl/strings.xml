@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Polnisch. Geografische Eigennamen bleiben in der deutschen Form, weil die
+     Listen- und Detailansichten dieselben Namen aus den Passdaten anzeigen. -->
+<resources>
+    <string name="app_name">Pass der Deutschen Berge</string>
+
+    <string name="tab_map">Mapa</string>
+    <string name="tab_regions">Regiony</string>
+    <string name="tab_summits">Szczyty</string>
+    <string name="tab_collections">Kolekcje</string>
+    <string name="tab_progress">Postęp</string>
+    <string name="action_back">Wstecz</string>
+
+    <string name="section_landscape">Krajobraz i charakter</string>
+    <string name="section_about_region">O regionie</string>
+    <string name="section_about_summit">O szczycie</string>
+    <string name="section_key_summits">Najważniejsze szczyty</string>
+    <string name="section_discovery_regions">Regiony odkrywania</string>
+    <string name="section_mountains_in_region">Góry w tym regionie</string>
+    <string name="section_nearby">Skoro już tu jesteś …</string>
+    <string name="section_notes">Notatki</string>
+    <string name="section_tour">Moja wycieczka</string>
+    <string name="no_own_summit_page">Brak osobnej strony szczytu – tutaj na pierwszym planie są cele regionalne.</string>
+
+    <string name="cat_summit">Szczyt</string>
+    <string name="cat_pass">Przełęcz / grań</string>
+    <string name="cat_water">Woda, źródła i wodospady</string>
+    <string name="cat_rock">Skały i jaskinie</string>
+    <string name="cat_nature">Przyroda i widoki</string>
+    <string name="cat_castle">Zamki, pałace i kultura</string>
+    <string name="cat_trail">Szlaki i przeżycia</string>
+    <string name="cat_collection">Cele kolekcji</string>
+
+    <string name="focus_castle">zamki, pałace i miejsca kultury</string>
+    <string name="focus_water">jeziora, źródła i wodospady</string>
+    <string name="focus_nature">punkty przyrodnicze i widokowe</string>
+    <string name="focus_rock">skały i jaskinie</string>
+    <string name="focus_trail">szlaki piesze i wyzwania</string>
+    <string name="focus_mixed">różnorodne cele przyrodnicze i kulturowe</string>
+    <string name="list_and">i</string>
+
+    <string name="tpl_summit_intro">%1$s leży w grupie tras %2$s.</string>
+    <string name="tpl_summit_elevation">Szczyt osiąga %1$s.</string>
+    <string name="tpl_summit_nearby">Wycieczkę szczególnie dobrze można połączyć z: %1$s.</string>
+    <string name="tpl_summit_outro">W zależności od punktu startowego wejście można zaplanować jako krótką wycieczkę szczytową lub jako część dłuższej pętli.</string>
+    <string name="tpl_region_focus">W grupie tras %1$s na pierwszym planie znajdują się %2$s.</string>
+    <string name="tpl_region_top">Do najbardziej charakterystycznych celów należą: %1$s.</string>
+    <string name="tpl_region_peaks">Najważniejsze szczyty to: %1$s.</string>
+    <string name="tpl_collection">Ta specjalna kolekcja zbiera wybrane cele z całego paszportu.</string>
+    <string name="tpl_collection_top">Do zawartych celów należą: %1$s.</string>
+
+    <string name="form_date">Data wejścia</string>
+    <string name="form_start">Punkt startowy</string>
+    <string name="form_route">AllTrails – nazwa trasy</string>
+    <string name="form_distance">Dystans</string>
+    <string name="form_time">Czas</string>
+    <string name="form_elevation_gain">Przewyższenie +</string>
+    <string name="form_rating">Moja ocena</string>
+    <string name="form_notes">Notatki</string>
+    <string name="form_hint_notes">Własne notatki …</string>
+    <string name="visit_date">Data odwiedzin</string>
+    <string name="set_today">Dzisiaj</string>
+    <string name="clear_date">Usuń datę</string>
+    <string name="rating_value">%1$d z 5</string>
+    <string name="not_rated">Bez oceny</string>
+
+    <string name="map_title">Niemcy</string>
+    <string name="map_reset">Zresetuj widok</string>
+    <string name="map_hint">Przeciągnij, aby przesunąć, dwoma palcami przybliż. Dotknij punktu, aby otworzyć wielki region.</string>
+    <string name="map_approximate">Znaczniki pokazują przybliżone położenie obszarów. Paszport nie zawiera dokładnych współrzędnych.</string>
+    <string name="map_legend_done">ukończone</string>
+    <string name="map_legend_partial">rozpoczęte</string>
+    <string name="map_legend_open">otwarte</string>
+    <string name="map_selected_none">Nie wybrano obszaru</string>
+
+    <string name="overview_macro_regions">Wielkie regiony</string>
+    <string name="overview_intro">Paszport jest ułożony według odległości podróży od Overath: najpierw obszary bliskie, potem krok po kroku dalej przez Niemcy.</string>
+    <string name="search_hint">Szukaj …</string>
+    <string name="no_results">Brak wyników</string>
+    <string name="filter_all">Wszystkie</string>
+    <string name="filter_open">Otwarte</string>
+    <string name="filter_done">Ukończone</string>
+    <string name="sort_label">Sortowanie</string>
+    <string name="sort_pass_order">Kolejność paszportu</string>
+    <string name="sort_name">Nazwa</string>
+    <string name="sort_elevation">Wysokość</string>
+    <string name="elevation_format">%1$s m n.p.m.</string>
+    <string name="elevation_unknown">Wysokość nie podana</string>
+    <string name="page_reference">s. %1$d</string>
+    <string name="source_page">Źródło: s. %1$d</string>
+
+    <string name="progress_title">Mój postęp</string>
+    <string name="progress_summits">Szczyty</string>
+    <string name="progress_targets">Cele</string>
+    <string name="progress_regions">Ukończone regiony</string>
+    <string name="progress_macro_regions">Ukończone wielkie regiony</string>
+    <string name="progress_percent">%1$d %%</string>
+    <string name="progress_of">%1$d z %2$d</string>
+    <plurals name="summits_climbed">
+        <item quantity="one">Zdobyto %d szczyt</item>
+        <item quantity="few">Zdobyto %d szczyty</item>
+        <item quantity="many">Zdobyto %d szczytów</item>
+        <item quantity="other">Zdobyto %d szczytu</item>
+    </plurals>
+    <plurals name="targets_visited">
+        <item quantity="one">Odwiedzono %d cel</item>
+        <item quantity="few">Odwiedzono %d cele</item>
+        <item quantity="many">Odwiedzono %d celów</item>
+        <item quantity="other">Odwiedzono %d celu</item>
+    </plurals>
+    <plurals name="regions_count">
+        <item quantity="one">%d region</item>
+        <item quantity="few">%d regiony</item>
+        <item quantity="many">%d regionów</item>
+        <item quantity="other">%d regionu</item>
+    </plurals>
+    <plurals name="summits_count">
+        <item quantity="one">%d szczyt</item>
+        <item quantity="few">%d szczyty</item>
+        <item quantity="many">%d szczytów</item>
+        <item quantity="other">%d szczytu</item>
+    </plurals>
+    <plurals name="targets_count">
+        <item quantity="one">%d cel</item>
+        <item quantity="few">%d cele</item>
+        <item quantity="many">%d celów</item>
+        <item quantity="other">%d celu</item>
+    </plurals>
+
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_language">Język</string>
+    <string name="language_system">Język systemu</string>
+    <string name="language_de">Niemiecki</string>
+    <string name="language_pl">Polski</string>
+    <string name="settings_reset">Zresetuj postęp</string>
+    <string name="settings_reset_confirm">Na pewno usunąć cały postęp? Tej operacji nie można cofnąć.</string>
+    <string name="action_delete">Usuń</string>
+    <string name="action_cancel">Anuluj</string>
+    <string name="about_title">O paszporcie</string>
+    <string name="about_stats">%1$d celów · %2$d szczytów · %3$d regionów odkrywania</string>
+    <string name="about_sources_title">Podstawa źródłowa</string>
+    <string name="about_sources">Wybór łączy istniejącą bazę paszportu z rozszerzeniem obejmującym całe Niemcy. Jako podstawa posłużyły przede wszystkim oficjalne portale turystyczne i regionalne; paszport pomyślany jest jako osobista lista odkrywcy, a nie jako urzędowy spis wszystkich atrakcji.</string>
+    <string name="about_disclaimer">Godziny otwarcia, zamknięcia szlaków, dostęp do jaskiń i warunki sezonowe mogą się zmieniać. Przed wycieczką prosimy sprawdzić oficjalną stronę danego celu lub regionu.</string>
+    <string name="about_map_data">Geometria mapy: Natural Earth (domena publiczna). Położenia obszarów to kurowane wartości przybliżone.</string>
+
+    <string name="cd_checked">Ukończone</string>
+    <string name="cd_unchecked">Otwarte</string>
+    <string name="cd_open_details">Otwórz szczegóły</string>
+    <string name="cd_map">Mapa Niemiec z obszarami paszportu</string>
+</resources>

@@ -46,6 +46,27 @@ COLLECTION_RE = re.compile(
 )
 
 
+# Kleinschreibung bleibt erhalten bei Bindewoertern und Praepositionen, die in
+# den Gebietsnamen des Passes vorkommen.
+LOWER_WORDS = {"und", "bei", "am", "an", "im", "in", "der", "die", "das", "vom", "von", "zu", "zur"}
+
+
+def title_case(name):
+    """'OVERATH / BERGISCHES LAND' -> 'Overath / Bergisches Land'."""
+    out = []
+    for i, token in enumerate(name.split(" ")):
+        if not token or not token.isupper():
+            out.append(token)
+            continue
+        low = token.lower()
+        if i > 0 and low in LOWER_WORDS:
+            out.append(low)
+        else:
+            # Bindestrich- und Schraegstrich-Bestandteile einzeln umsetzen.
+            out.append(re.sub(r"[^\W\d_]+", lambda m: m.group(0).capitalize(), low))
+    return " ".join(out)
+
+
 def split_focus(phrase):
     """Fokusphrase in Atom-Schluessel zerlegen; None wenn nicht vollstaendig zerlegbar."""
     rest = phrase
@@ -181,9 +202,32 @@ def main():
             r["macroRegionId"] = m["id"] if m else None
             if m and r["id"] not in m["regionIds"]:
                 m["regionIds"].append(r["id"])
+    # Die Kopfzeile der Gipfelseite nennt die Grossregion in gemischter
+    # Schreibweise, die Uebersichtsseite in Versalien - deshalb nicht ueber den
+    # Namen verknuepfen, sondern ueber die Region des Gipfels.
+    rid_all = {r["id"]: r for r in regions}
     for s in summits:
-        m = macro_by_name.get(s["macroRegion"])
-        s["macroRegionId"] = m["id"] if m else None
+        r = rid_all.get(s["regionId"])
+        s["macroRegionId"] = r["macroRegionId"] if r else None
+
+    # Anzeigenamen: Seitenueberschriften stehen in Versalien, die Index- und
+    # Listeneintraege in gemischter Schreibweise. Fuer die UI die lesbare Form
+    # bevorzugen und nur zur Not selbst umsetzen.
+    display = {}
+    for m in macros:
+        for rr in m["regionRefs"]:
+            r = region_by_page.get(rr["pageFrom"])
+            if r:
+                display[r["id"]] = rr["name"]
+        for ks in m["keySummits"]:
+            if ks.get("id"):
+                display[ks["id"]] = ks["name"]
+    for r in regions:
+        for sr in r["summitRefs"]:
+            if sr.get("id"):
+                display.setdefault(sr["id"], sr["name"])
+    for item in macros + regions + summits:
+        item["displayName"] = display.get(item["id"]) or title_case(item["name"])
 
     # --- Textbausteine strukturieren (fuer DE/PL-Rendering zur Laufzeit) ---
     stats = {"summitTemplate": 0, "summitRaw": 0, "regionTemplate": 0,

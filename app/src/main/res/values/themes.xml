@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AppCompat-Basis ist Pflicht: die Per-App-Sprachumschaltung laeuft ueber
+         AppCompatDelegate.setApplicationLocales und setzt eine AppCompatActivity
+         voraus. Die eigentliche Optik kommt vollstaendig aus Compose/Material 3. -->
+    <style name="Theme.PassDerDeutschenBerge" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>
