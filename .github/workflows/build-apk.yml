@@ -59,7 +59,9 @@ jobs:
           ls "$ANDROID_HOME/platforms"
 
       - name: Unit-Tests
-        run: ./gradlew --no-daemon --stacktrace testDebugUnitTest
+        run: |
+          set -o pipefail
+          ./gradlew --no-daemon testDebugUnitTest 2>&1 | tee /tmp/tests.log
 
       - name: Debug-APK bauen
         run: ./gradlew --no-daemon --stacktrace assembleDebug
@@ -191,3 +193,15 @@ jobs:
           else
             echo "kein Lint-Textreport gefunden"
           fi
+
+      # Compiler- und Testfehler stehen sonst mitten im Protokoll und werden
+      # von der nachfolgenden Ausgabe verdeckt.
+      - name: Compiler- und Testfehler ausgeben
+        if: failure()
+        run: |
+          echo "===== KOTLIN-/COMPILERFEHLER ====="
+          grep -E "^e: |error:|Unresolved reference|Type mismatch|None of the following" /tmp/tests.log | head -40 || echo "(keine)"
+          echo "===== FEHLGESCHLAGENE TESTS ====="
+          grep -E "FAILED|expected:|AssertionError" /tmp/tests.log | head -40 || echo "(keine)"
+          echo "===== LETZTE ZEILEN ====="
+          tail -25 /tmp/tests.log || true
