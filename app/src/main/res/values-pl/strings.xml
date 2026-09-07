@@ -147,4 +147,27 @@
     <string name="cd_unchecked">Otwarte</string>
     <string name="cd_open_details">Otwórz szczegóły</string>
     <string name="cd_map">Mapa Niemiec z obszarami paszportu</string>
+
+    <!-- Wymiana danych -->
+    <string name="transfer_title">Kopia i przeniesienie danych</string>
+    <string name="transfer_hint">Postęp znajduje się wyłącznie na tym urządzeniu. Przed zmianą urządzenia lub ponowną instalacją wykonaj eksport – i zaimportuj go w nowej instalacji.</string>
+    <string name="action_export">Eksportuj</string>
+    <string name="action_import">Importuj</string>
+    <string name="import_mode_title">Import</string>
+    <string name="import_mode_question">Co zrobić z dotychczasowym postępem?</string>
+    <string name="import_mode_replace">Zastąp</string>
+    <string name="import_mode_replace_hint">Dotychczasowy stan zostanie odrzucony. Właściwe przy przenosinach na nowe urządzenie.</string>
+    <string name="import_mode_merge">Scal</string>
+    <string name="import_mode_merge_hint">Oba stany zostaną połączone. Przy konflikcie obowiązuje wartość z importu.</string>
+    <string name="transfer_result_title">Wynik</string>
+    <string name="export_done">Zapisano jako %1$s.</string>
+    <string name="import_done">Przejęto: %1$d szczytów, %2$d celów, %3$d notatek.</string>
+    <string name="import_unresolved">%1$d wpisów nie udało się przypisać do pozycji w paszporcie – zostały pominięte.</string>
+    <string name="import_nothing">Plik nie zawierał wpisów możliwych do przejęcia.</string>
+    <string name="transfer_failed">Nie powiodło się.</string>
+    <string name="transfer_error_invalid_json">Plik nie jest prawidłowym JSON-em.</string>
+    <string name="transfer_error_wrong_format">Plik nie jest plikiem postępu tej aplikacji.</string>
+    <string name="transfer_error_newer_version">Plik pochodzi z nowszej wersji aplikacji (format %1$s). Zaktualizuj aplikację.</string>
+    <string name="transfer_error_io">Nie udało się odczytać lub zapisać pliku.</string>
+    <string name="action_ok">OK</string>
 </resources>

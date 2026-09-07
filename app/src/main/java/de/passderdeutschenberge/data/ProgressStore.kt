@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import org.json.JSONObject
 
@@ -67,6 +68,17 @@ class ProgressStore(private val context: Context) {
     suspend fun clearAll() {
         context.dataStore.edit { it.remove(progressKey) }
     }
+
+    /** Setzt den kompletten Stand - wird vom Import verwendet. */
+    suspend fun replaceAll(progress: PassProgress) {
+        context.dataStore.edit { prefs -> prefs[progressKey] = encode(progress) }
+    }
+
+    /** Liest den aktuellen Stand einmalig, ohne den Flow zu beobachten. */
+    suspend fun snapshot(): PassProgress =
+        context.dataStore.data.first().let { prefs ->
+            prefs[progressKey]?.let(::decode) ?: PassProgress()
+        }
 
     private suspend fun mutate(transform: (PassProgress) -> PassProgress) {
         context.dataStore.edit { prefs ->

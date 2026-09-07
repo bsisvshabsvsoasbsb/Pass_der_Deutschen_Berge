@@ -151,4 +151,27 @@
     <string name="cd_unchecked">Offen</string>
     <string name="cd_open_details">Details öffnen</string>
     <string name="cd_map">Karte von Deutschland mit den Gebieten des Passes</string>
+
+    <!-- Datenaustausch -->
+    <string name="transfer_title">Daten sichern und übernehmen</string>
+    <string name="transfer_hint">Der Fortschritt liegt nur auf diesem Gerät. Vor einem Gerätewechsel oder einer Neuinstallation exportieren – und in der neuen Installation wieder importieren.</string>
+    <string name="action_export">Exportieren</string>
+    <string name="action_import">Importieren</string>
+    <string name="import_mode_title">Import</string>
+    <string name="import_mode_question">Wie soll der bisherige Fortschritt behandelt werden?</string>
+    <string name="import_mode_replace">Ersetzen</string>
+    <string name="import_mode_replace_hint">Der bisherige Stand wird verworfen. Richtig beim Umzug auf ein neues Gerät.</string>
+    <string name="import_mode_merge">Zusammenführen</string>
+    <string name="import_mode_merge_hint">Beide Stände werden vereinigt. Bei Überschneidungen gilt der importierte Wert.</string>
+    <string name="transfer_result_title">Ergebnis</string>
+    <string name="export_done">Gespeichert als %1$s.</string>
+    <string name="import_done">Übernommen: %1$d Gipfel, %2$d Ziele, %3$d Notizen.</string>
+    <string name="import_unresolved">%1$d Einträge konnten keinem Eintrag im Pass zugeordnet werden und wurden übersprungen.</string>
+    <string name="import_nothing">Die Datei enthielt keine übernehmbaren Einträge.</string>
+    <string name="transfer_failed">Fehlgeschlagen.</string>
+    <string name="transfer_error_invalid_json">Die Datei ist kein gültiges JSON.</string>
+    <string name="transfer_error_wrong_format">Die Datei ist keine Fortschrittsdatei dieser App.</string>
+    <string name="transfer_error_newer_version">Die Datei stammt aus einer neueren Fassung der App (Format %1$s). Bitte die App aktualisieren.</string>
+    <string name="transfer_error_io">Die Datei konnte nicht gelesen oder geschrieben werden.</string>
+    <string name="action_ok">OK</string>
 </resources>

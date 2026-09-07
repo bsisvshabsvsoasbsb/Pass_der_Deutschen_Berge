@@ -25,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import de.passderdeutschenberge.BuildConfig
 import de.passderdeutschenberge.R
 import de.passderdeutschenberge.data.PassCatalog
 import de.passderdeutschenberge.data.PassProgress
@@ -202,6 +203,8 @@ private fun TabContent(
                 catalog = catalog,
                 progress = progress,
                 languageTag = languageTag,
+                viewModel = viewModel,
+                appVersion = BuildConfig.VERSION_NAME,
                 onLanguageSelected = onLanguageSelected,
                 onClearProgress = { viewModel.clearProgress() },
             )

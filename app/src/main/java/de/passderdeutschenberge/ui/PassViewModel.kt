@@ -1,6 +1,10 @@
 package de.passderdeutschenberge.ui
 
+import android.content.ContentResolver
+import android.net.Uri
 import androidx.lifecycle.ViewModel
+import android.content.ContentResolver
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -11,14 +15,27 @@ import de.passderdeutschenberge.data.GermanyOutline
 import de.passderdeutschenberge.data.PassCatalog
 import de.passderdeutschenberge.data.PassProgress
 import de.passderdeutschenberge.data.ProgressStore
+import de.passderdeutschenberge.data.ProgressTransfer
 import de.passderdeutschenberge.data.SummitEntry
 import de.passderdeutschenberge.data.TargetEntry
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+/** Rueckmeldung eines Datenaustauschs zur Anzeige. */
+sealed interface TransferState {
+    data class Exported(val fileName: String) : TransferState
+    data class Imported(val report: ProgressTransfer.ImportReport) : TransferState
+    data class Failed(
+        val reason: ProgressTransfer.Reason,
+        val detail: String = "",
+    ) : TransferState
+}
 
 data class CatalogState(
     val catalog: PassCatalog? = null,
@@ -78,6 +95,50 @@ class PassViewModel(
         container.progressStore.clearAll()
     }
 
+    private val _transfer = MutableStateFlow<TransferState?>(null)
+    val transfer: StateFlow<TransferState?> = _transfer.asStateFlow()
+
+    fun dismissTransfer() {
+        _transfer.value = null
+    }
+
+    fun exportProgress(
+        resolver: ContentResolver,
+        uri: Uri,
+        appVersion: String,
+        fileName: String,
+    ) = viewModelScope.launch {
+        val catalog = _catalog.value.catalog ?: return@launch
+        _transfer.value = runCatching {
+            val json = ProgressTransfer.export(progress.value, catalog, appVersion)
+            withContext(Dispatchers.IO) {
+                val stream = resolver.openOutputStream(uri)
+                    ?: throw ProgressTransfer.TransferException(ProgressTransfer.Reason.IO)
+                stream.use { it.write(json.toByteArray(Charsets.UTF_8)) }
+            }
+            TransferState.Exported(fileName)
+        }.getOrElse { it.toTransferState() }
+    }
+
+    fun importProgress(
+        resolver: ContentResolver,
+        uri: Uri,
+        replace: Boolean,
+    ) = viewModelScope.launch {
+        val catalog = _catalog.value.catalog ?: return@launch
+        _transfer.value = runCatching {
+            val json = withContext(Dispatchers.IO) {
+                val stream = resolver.openInputStream(uri)
+                    ?: throw ProgressTransfer.TransferException(ProgressTransfer.Reason.IO)
+                stream.use { it.readBytes().toString(Charsets.UTF_8) }
+            }
+            val current = container.progressStore.snapshot()
+            val (merged, report) = ProgressTransfer.import(json, catalog, current, replace)
+            container.progressStore.replaceAll(merged)
+            TransferState.Imported(report)
+        }.getOrElse { it.toTransferState() }
+    }
+
     companion object {
         val CONTAINER_KEY = object : CreationExtras.Key<AppContainer> {}
 
@@ -85,4 +146,9 @@ class PassViewModel(
             initializer { PassViewModel(this[CONTAINER_KEY]!!) }
         }
     }
+}
+
+private fun Throwable.toTransferState(): TransferState = when (this) {
+    is ProgressTransfer.TransferException -> TransferState.Failed(reason, detail)
+    else -> TransferState.Failed(ProgressTransfer.Reason.IO, message.orEmpty())
 }

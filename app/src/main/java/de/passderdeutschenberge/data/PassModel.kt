@@ -104,6 +104,28 @@ class PassCatalog(
     val targetById: Map<String, Target> = regions.flatMap { it.targets }.associateBy { it.id }
     val regionsByMacro: Map<String, List<Region>> = regions.groupBy { it.macroRegionId ?: "" }
     val summitsByRegion: Map<String, List<Summit>> = summits.groupBy { it.regionId ?: "" }
+    val regionBySlug: Map<String, Region> = regions.associateBy { it.slug }
+
+    // Fachliche Ersatzschluessel fuer den Datenaustausch. Die technischen IDs
+    // enthalten die Seitenzahl aus dem Quell-PDF und koennen sich bei einer
+    // neuen Fassung verschieben; diese Schluessel bleiben stabil.
+    // Gipfel-Slugs allein sind nicht eindeutig (z. B. "hochstein" zweimal),
+    // deshalb zusammengesetzt mit der Region.
+    val summitByKey: Map<String, Summit> = summits.mapNotNull { summit ->
+        val region = regionById[summit.regionId] ?: return@mapNotNull null
+        summitKey(region.slug, summit.slug) to summit
+    }.toMap()
+
+    val targetByKey: Map<String, Target> = regions.flatMap { region ->
+        region.targets.map { target -> targetKey(region.slug, target.name) to target }
+    }.toMap()
+
+    fun keyOfSummit(summit: Summit): String? =
+        regionById[summit.regionId]?.let { summitKey(it.slug, summit.slug) }
+
+    fun keyOfTarget(targetId: String): String? = regions.firstNotNullOfOrNull { region ->
+        region.targets.firstOrNull { it.id == targetId }?.let { targetKey(region.slug, it.name) }
+    }
 
     /** Grossregionen mit Ort - Grundlage der Kartenansicht. */
     val locatedMacroRegions: List<MacroRegion> = macroRegions.filter { !it.virtual }
@@ -120,4 +142,9 @@ class PassCatalog(
 
     fun summitsOf(macro: MacroRegion): List<Summit> =
         summits.filter { it.macroRegionId == macro.id }
+
+    companion object {
+        fun summitKey(regionSlug: String, summitSlug: String) = "$regionSlug/$summitSlug"
+        fun targetKey(regionSlug: String, targetName: String) = "$regionSlug/$targetName"
+    }
 }
