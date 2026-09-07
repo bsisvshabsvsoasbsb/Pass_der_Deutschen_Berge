@@ -6,7 +6,10 @@ on:
       - main
       - claude/android-app-multilingual-map-la76fe
       - 'dev/**'          # persoenliche Arbeitszweige
-    paths-ignore: ['**.md', '.github/workflows/probe-versions.yml']
+    # Bewusst ohne paths-ignore: bei einem Push, der nur einen Branch anlegt,
+    # kann GitHub keine geaenderten Dateien ermitteln und ueberspringt den Lauf
+    # stillschweigend. Zwei Minuten Buildzeit sind das weniger wert als die
+    # Verlaesslichkeit, dass jeder Push auf einem beobachteten Zweig prueft.
   pull_request:
   workflow_dispatch:
 
