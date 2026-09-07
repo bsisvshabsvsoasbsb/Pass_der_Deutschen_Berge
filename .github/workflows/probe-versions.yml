@@ -5,6 +5,9 @@ name: Probe versions
 
 on:
   workflow_dispatch:
+  push:
+    branches: [claude/android-app-multilingual-map-la76fe]
+    paths: ['.github/workflows/probe-versions.yml']
 
 jobs:
   probe:
