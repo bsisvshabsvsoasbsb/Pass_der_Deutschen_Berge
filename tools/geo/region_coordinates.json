@@ -1,0 +1,269 @@
+{
+  "_comment": "Naeherungskoordinaten (WGS84) je Entdeckungsregion. Kuratiert, nicht amtlich - dienen ausschliesslich der schematischen Verortung auf der Deutschlandkarte. Grossregions-Zentroide und Bounding-Boxen werden daraus berechnet (tools/build_geo.py). Regionen der virtuellen Grossregion 'SAMMLUNGEN & HERAUSFORDERUNGEN' sind bewusst ohne Koordinate.",
+  "regions": {
+    "OVERATH / HECKBERGER WALD":            [50.94, 7.32],
+    "OVERATH / LÜDERICH":                   [50.94, 7.20],
+    "OVERATH / KÖNIGSFORST":                [50.93, 7.13],
+    "BERGISCHES LAND - DHÜNN / AGGER":      [51.05, 7.27],
+    "BERGISCHES LAND - WUPPER":             [51.17, 7.13],
+    "BERGISCHES LAND - BURGEN / TÄLER":     [50.98, 7.45],
+
+    "SIEBENGEBIRGE - KÖNIGSWINTER":         [50.67, 7.21],
+    "SIEBENGEBIRGE - WEITERE GIPFEL":       [50.66, 7.26],
+
+    "BAD MÜNSTEREIFEL":                     [50.55, 6.76],
+    "NATIONALPARK EIFEL - RURSEE":          [50.62, 6.40],
+    "HEIMBACH / RURSEE - KULTUR":           [50.63, 6.47],
+    "MECHERNICH / NETTERSHEIM":             [50.53, 6.65],
+    "MONSCHAU - HOHES VENN":                [50.55, 6.24],
+
+    "AHRGEBIRGE":                           [50.50, 7.05],
+    "ALTENAHR / AHRSCHLEIFE":               [50.52, 6.99],
+
+    "LAACHER SEE / OSTEIFEL":               [50.41, 7.27],
+    "MAYEN / VULKANPARK":                   [50.33, 7.22],
+    "MONREAL / ELZTAL":                     [50.30, 7.16],
+    "HOHE EIFEL":                           [50.38, 7.00],
+
+    "HOHER WESTERWALD":                     [50.66, 8.00],
+    "BREITSCHEID / KARST":                  [50.68, 8.19],
+    "DRUIDENSTEIN / SIEGTAL":               [50.79, 7.75],
+
+    "BIGGE / HOMERT":                       [51.13, 8.02],
+    "ATTENDORN / BIGGESEE":                 [51.11, 7.93],
+    "ISERLOHN / BALVE / HEMER":             [51.35, 7.80],
+    "SAUERLAND - WINTERBERG":               [51.19, 8.53],
+    "ROTHAARGEBIRGE - LANGENBERG":          [51.28, 8.56],
+    "BRUCHHAUSER STEINE":                   [51.32, 8.53],
+    "WILLINGEN":                            [51.29, 8.61],
+    "WITTGENSTEIN / SIEGERLAND":            [51.00, 8.30],
+
+    "TEUTOBURGER WALD / EGGE":              [51.90, 8.85],
+    "DETMOLD / EXTERNSTEINE":               [51.87, 8.92],
+    "WESER-SKYWALK / BAD KARLSHAFEN":       [51.64, 9.45],
+    "WESERBERGLAND - BURGENSTRASSE":        [52.05, 9.36],
+
+    "KOBLENZ / EHRENBREITSTEIN":            [50.36, 7.61],
+    "BRAUBACH / MARKSBURG":                 [50.27, 7.65],
+    "LORELEY / ST. GOAR":                   [50.14, 7.73],
+    "BACHARACH / BINGEN":                   [49.97, 7.77],
+
+    "KOBLENZ":                              [50.36, 7.59],
+    "WINNINGEN":                            [50.32, 7.46],
+    "KOBERN-GONDORF":                       [50.30, 7.46],
+    "BRODENBACH / ALKEN":                   [50.25, 7.44],
+    "UNTERMOSEL - BURGEN & AUSSICHT":       [50.25, 7.40],
+    "HATZENPORT":                           [50.23, 7.39],
+    "PYRMONT":                              [50.22, 7.25],
+    "PYRMONT / ELZBACHTAL":                 [50.23, 7.23],
+    "BURG ELTZ / MOSELKERN":                [50.20, 7.34],
+    "TREIS-KARDEN":                         [50.17, 7.30],
+    "COCHEM":                               [50.15, 7.17],
+    "COCHEM / ENDERTTAL - ERWEITERUNG":     [50.16, 7.14],
+    "BEILSTEIN":                            [50.10, 7.24],
+    "EDIGER-ELLER":                         [50.09, 7.15],
+    "CALMONT":                              [50.08, 7.13],
+    "ST. ALDEGUND / NEEF":                  [50.06, 7.13],
+
+    "DAUNER MAARE":                         [50.17, 6.85],
+    "MANDERSCHEID":                         [50.10, 6.81],
+    "PULVERMAAR / STROHN":                  [50.13, 6.92],
+    "ULMEN / MAAR-STOLLEN":                 [50.21, 6.98],
+    "GEROLSTEIN / DOLOMITEN":               [50.22, 6.66],
+
+    "ERBESKOPF / NATIONALPARK":             [49.72, 7.07],
+    "HUNSRÜCK - SCHLUCHTEN":                [49.95, 7.35],
+    "HUNSRÜCK - BURGEN / KELTEN":           [49.80, 7.30],
+    "SAAR-HUNSRÜCK":                        [49.60, 6.95],
+
+    "HOCHTAUNUS":                           [50.23, 8.46],
+    "KÖNIGSTEIN / FALKENSTEIN / KRONBERG":  [50.18, 8.47],
+    "RHEINGAU / NIEDERWALD":                [49.98, 7.94],
+
+    "LAHN - BURGEN & SCHLÖSSER":            [50.39, 8.06],
+    "WEILBURG / KUBACH":                    [50.49, 8.26],
+    "DILLENBURG / DILLTAL":                 [50.74, 8.29],
+
+    "ZELL":                                 [50.02, 7.18],
+    "REIL / PÜNDERICH / BULLAY":            [50.02, 7.13],
+    "TRABEN-TRARBACH":                      [49.95, 7.11],
+    "TRABEN-TRARBACH - BURGENROUTE":        [49.95, 7.12],
+    "ZELTINGEN / ÜRZIG":                    [49.96, 7.00],
+    "BERNKASTEL-KUES":                      [49.92, 7.07],
+    "BERNKASTEL / ZELTINGEN - ERWEITERUNG": [49.94, 7.04],
+    "BRAUNEBERG / MÜLHEIM":                 [49.89, 6.98],
+    "PIESPORT / NEUMAGEN":                  [49.87, 6.92],
+    "MEHRING / LEIWEN":                     [49.82, 6.85],
+    "MOSEL - HERAUSFORDERUNGEN":            [49.95, 7.05],
+
+    "TRIER":                                [49.76, 6.64],
+    "TRIER / SAARMÜNDUNG - KULTUR":         [49.72, 6.60],
+    "NITTEL - FELSENLAND":                  [49.65, 6.44],
+    "KASTEL-STAADT / SAARFELSEN":           [49.61, 6.62],
+    "OBERMOSEL - PERL":                     [49.47, 6.37],
+
+    "SAARSCHLEIFE / METTLACH":              [49.50, 6.60],
+    "HOMBURG / KIRKEL":                     [49.32, 7.34],
+    "LOSHEIM / SAARLAND NATUR":             [49.51, 6.75],
+
+    "KASSEL / BERGPARK WILHELMSHÖHE":       [51.32, 9.40],
+    "EDERSEE / KELLERWALD":                 [51.17, 8.98],
+    "GRIMMHEIMAT - BURGEN":                 [51.20, 9.30],
+
+    "HOHER VOGELSBERG":                     [50.51, 9.22],
+
+    "WASSERKUPPE / KREUZBERG":              [50.50, 9.94],
+    "RHÖN - MOORE / BASALT / KULTUR":       [50.45, 10.00],
+
+    "HAMBACH / KALMIT":                     [49.33, 8.10],
+    "TRIFELS / ANNWEILER":                  [49.20, 7.97],
+    "DAHNER FELSENLAND - BURGEN":           [49.15, 7.78],
+    "DAHNER FELSENLAND - FELSEN":           [49.14, 7.80],
+
+    "ODENWALD":                             [49.60, 8.95],
+    "BERGSTRASSE - BURGENSTEIG":            [49.68, 8.65],
+    "ODENWALD - NATUR / HÖHLEN":            [49.53, 9.00],
+
+    "SPESSART":                             [50.00, 9.40],
+    "SPESSART - BURGEN / TÄLER":            [49.95, 9.45],
+
+    "WILSEDE / WILSEDER BERG":              [53.17, 9.94],
+    "SCHNEVERDINGEN / PIETZMOOR":           [53.11, 9.80],
+
+    "BROCKEN":                              [51.80, 10.62],
+    "ILSETAL":                              [51.84, 10.65],
+    "OKERTAL":                              [51.87, 10.45],
+    "BODETAL":                              [51.72, 11.02],
+    "HOCHHARZ":                             [51.78, 10.60],
+    "HARZ - HÖHLEN":                        [51.70, 10.85],
+    "HARZ - BURGEN / SCHLÖSSER / KLÖSTER":  [51.79, 11.14],
+    "HARZ - BERGBAU / WASSER":              [51.81, 10.34],
+    "SÜDHARZ / HERAUSFORDERUNGEN":          [51.55, 10.80],
+
+    "EISENACH / WARTBURG / SCHLUCHTEN":     [50.97, 10.31],
+    "RENNSTEIG / INSELSBERG":               [50.85, 10.47],
+    "THÜRINGER WALD - KULTUR / NATUR":      [50.70, 10.75],
+
+    "HAINICH":                              [51.08, 10.45],
+    "EICHSFELD / WERRA":                    [51.35, 10.15],
+    "KYFFHÄUSER / SÜDHARZ":                 [51.41, 11.10],
+
+    "SAALE-UNSTRUT - BURGEN":               [51.23, 11.60],
+    "JENA / SAALETAL":                      [50.93, 11.59],
+
+    "FRANKENWALD":                          [50.31, 11.68],
+    "FRANKENWALD - BURGEN / NATUR":         [50.30, 11.50],
+
+    "FICHTELGEBIRGE":                       [50.03, 11.86],
+    "FICHTELGEBIRGE - FELSEN / BURGEN":     [50.00, 11.80],
+
+    "FRÄNKISCHE SCHWEIZ":                   [49.77, 11.41],
+    "FRÄNKISCHE SCHWEIZ - BURGEN":          [49.80, 11.30],
+    "FRÄNKISCHE SCHWEIZ - HÖHLEN / FELSEN": [49.75, 11.40],
+
+    "ALTMÜHLTAL / DONAUDURCHBRUCH":         [48.90, 11.82],
+    "FRANKEN - GROSSE BURGEN / RESIDENZEN": [49.70, 10.70],
+
+    "SCHWÄBISCHE ALB":                      [48.50, 9.40],
+    "SCHWÄBISCHE ALB - BURGEN":             [48.32, 8.97],
+    "SCHWÄBISCHE ALB - SCHAUHÖHLEN":        [48.45, 9.35],
+    "SCHWÄBISCHE ALB - QUELLEN / WASSERFÄLLE": [48.48, 9.45],
+
+    "OBERES DONAUTAL / BEURON":             [48.05, 8.97],
+    "UNESCO HÖHLEN / LONETAL / ACHTAL":     [48.55, 10.17],
+
+    "NORDSCHWARZWALD":                      [48.61, 8.20],
+    "NORDSCHWARZWALD - BURGEN / KULTUR":    [48.75, 8.45],
+    "NORDSCHWARZWALD - WASSER / SCHLUCHTEN": [48.56, 8.21],
+
+    "WASSERFÄLLE / MITTLERER SCHWARZWALD":  [48.13, 8.23],
+    "MITTLERER SCHWARZWALD - BURGEN / TÄLER": [48.25, 8.15],
+
+    "FELDBERG":                             [47.87, 8.00],
+    "BELCHEN / SCHAUINSLAND":               [47.85, 7.87],
+    "SCHLUCHTEN / HERAUSFORDERUNGEN":       [47.84, 8.35],
+    "SÜDSCHWARZWALD - SCHLUCHTEN":          [47.84, 8.33],
+    "SÜDSCHWARZWALD - WASSER / KULTUR":     [47.90, 8.10],
+
+    "HEGAU - VULKANBERGE":                  [47.79, 8.80],
+    "BODENSEE - BURGEN / SCHLÖSSER":        [47.70, 9.20],
+
+    "ERZGEBIRGE":                           [50.43, 12.95],
+    "ERZGEBIRGE - BERGWERKE":               [50.58, 12.87],
+    "ERZGEBIRGE - BURGEN / NATUR":          [50.70, 13.20],
+
+    "BASTEI / RATHEN":                      [50.96, 14.07],
+    "BASTEI / RATHEN - ERWEITERUNG":        [50.96, 14.08],
+    "SCHRAMMSTEINE":                        [50.91, 14.20],
+    "SCHRAMMSTEINE / AFFENSTEINE - ERWEITERUNG": [50.90, 14.22],
+    "KIRNITZSCHTAL":                        [50.92, 14.25],
+    "TAFELBERGE":                           [50.87, 14.15],
+    "BIELATAL / HERAUSFORDERUNGEN":         [50.84, 13.97],
+    "BIELATAL / FELSEN":                    [50.84, 13.98],
+    "KÖNIGSTEIN / HOHNSTEIN":               [50.92, 14.07],
+
+    "DRESDEN / ELBSCHLÖSSER":               [51.06, 13.82],
+    "MEISSEN / MORITZBURG":                 [51.16, 13.47],
+
+    "VOGTLAND":                             [50.45, 12.15],
+    "OBERLAUSITZ / MUSKAUER FALTENBOGEN":   [51.55, 14.72],
+    "ZITTAUER GEBIRGE":                     [50.85, 14.72],
+    "OYBIN / JONSDORF - ERWEITERUNG":       [50.84, 14.74],
+
+    "GROSSER ARBER":                        [49.11, 13.14],
+    "RACHEL":                               [48.98, 13.40],
+    "LUSEN":                                [48.94, 13.49],
+    "DREISESSEL / OSSER":                   [48.90, 13.55],
+    "BAYERISCHER WALD - BURGEN":            [49.10, 13.00],
+    "BAYERISCHER WALD - FELSEN / NATUR":    [49.00, 13.30],
+
+    "OBERSTDORF / NEBELHORN":               [47.42, 10.34],
+    "FELLHORN / HOCHGRAT":                  [47.45, 10.20],
+    "HINDELANG / HOCHVOGEL":                [47.42, 10.45],
+    "ALLGÄU - SCHLUCHTEN / BURGEN":         [47.50, 10.30],
+
+    "FÜSSEN / KÖNIGSSCHLÖSSER":             [47.56, 10.75],
+    "AMMERGAUER ALPEN":                     [47.60, 10.95],
+    "LINDERHOF / ETTAL":                    [47.57, 10.96],
+
+    "ZUGSPITZE":                            [47.42, 10.99],
+    "ALPSPITZE / HÖLLENTAL":                [47.43, 11.05],
+    "PARTNACH / KRAMER / WANK":             [47.48, 11.10],
+    "GARMISCH - KLAMMEN / KULTUR":          [47.49, 11.10],
+
+    "KARWENDEL":                            [47.42, 11.32],
+    "ESTERGEBIRGE":                         [47.55, 11.25],
+    "MITTENWALD / LEUTASCH":                [47.44, 11.26],
+
+    "WALCHENSEE":                           [47.58, 11.33],
+    "TEGERNSEE":                            [47.71, 11.76],
+    "WENDELSTEIN":                          [47.70, 12.01],
+    "TEGERNSEE / SCHLIERSEE - NATUR":       [47.72, 11.86],
+
+    "CHIEMGAUER ALPEN":                     [47.75, 12.35],
+    "CHIEMSEE / BURGEN / SCHLÖSSER":        [47.87, 12.42],
+
+    "KÖNIGSSEE / JENNER":                   [47.58, 12.98],
+    "WATZMANN":                             [47.55, 12.92],
+    "HOCHKALTER":                           [47.58, 12.87],
+    "HOHER GÖLL / UNTERSBERG":              [47.62, 13.06],
+    "LATTENGEBIRGE / REITER ALM":           [47.65, 12.85],
+    "KÖNIGSSEE / RAMSAU - NATUR":           [47.60, 12.90],
+    "OBERSALZBERG / UNTERSBERG":            [47.63, 13.05],
+
+    "HOHER FLÄMING - BURGEN":               [52.05, 12.60],
+    "SPREEWALD / LAUSITZ":                  [51.87, 13.99],
+
+    "POTSDAM - SCHLÖSSERLANDSCHAFT":        [52.40, 13.04],
+    "BERLIN - GRUNEWALD / SCHLÖSSER":       [52.48, 13.25],
+
+    "MÜRITZ / SERRAHN":                     [53.42, 12.75],
+
+    "HOLSTEINISCHE SCHWEIZ":                [54.14, 10.42],
+
+    "JASMUND / KREIDEKÜSTE":                [54.57, 13.65],
+    "RÜGEN - KAP ARKONA / GRANITZ":         [54.68, 13.43],
+
+    "NORDSEE - SYLT / AMRUM / HELGOLAND":   [54.60, 8.20]
+  }
+}
