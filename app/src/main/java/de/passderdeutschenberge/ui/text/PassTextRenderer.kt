@@ -3,7 +3,7 @@ package de.passderdeutschenberge.ui.text
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import de.passderdeutschenberge.R
 import de.passderdeutschenberge.data.MacroRegion
@@ -23,9 +23,9 @@ import java.util.Locale
 
 @Composable
 fun currentLocale(): Locale {
-    // Ueber die Resources statt ueber LocalConfiguration: dieser Weg ist ueber
-    // alle Compose-Versionen stabil und folgt der per-App gesetzten Sprache.
-    val configuration = LocalContext.current.resources.configuration
+    // LocalConfiguration ist der von Compose vorgesehene Zugriff; der Umweg
+    // ueber LocalContext.current.resources wird von Lint zurueckgewiesen.
+    val configuration = LocalConfiguration.current
     return remember(configuration) {
         configuration.locales.get(0) ?: Locale.getDefault()
     }
