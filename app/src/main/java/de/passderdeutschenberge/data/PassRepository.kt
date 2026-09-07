@@ -16,17 +16,35 @@ import org.json.JSONObject
 class PassRepository(private val context: Context) {
 
     suspend fun loadCatalog(): PassCatalog = withContext(Dispatchers.IO) {
-        val root = JSONObject(readAsset("pass_data.json"))
-        PassCatalog(
+        PassParser.parseCatalog(readAsset("pass_data.json"))
+    }
+
+    suspend fun loadGermany(): GermanyOutline = withContext(Dispatchers.IO) {
+        PassParser.parseGermany(readAsset("germany.json"))
+    }
+
+    private fun readAsset(name: String): String =
+        context.assets.open(name).bufferedReader(Charsets.UTF_8).use { it.readText() }
+}
+
+/**
+ * Reines Parsen ohne Android-Abhaengigkeit, damit die echten Assets in einem
+ * JVM-Test gegengelesen werden koennen.
+ */
+object PassParser {
+
+    fun parseCatalog(json: String): PassCatalog {
+        val root = JSONObject(json)
+        return PassCatalog(
             macroRegions = root.getJSONArray("macroRegions").map { it.toMacroRegion() },
             regions = root.getJSONArray("regions").map { it.toRegion() },
             summits = root.getJSONArray("summits").map { it.toSummit() },
         )
     }
 
-    suspend fun loadGermany(): GermanyOutline = withContext(Dispatchers.IO) {
-        val root = JSONObject(readAsset("germany.json"))
-        GermanyOutline(
+    fun parseGermany(json: String): GermanyOutline {
+        val root = JSONObject(json)
+        return GermanyOutline(
             attribution = root.optString("attribution"),
             states = root.getJSONArray("states").map { state ->
                 FederalState(
@@ -39,9 +57,6 @@ class PassRepository(private val context: Context) {
             },
         )
     }
-
-    private fun readAsset(name: String): String =
-        context.assets.open(name).bufferedReader(Charsets.UTF_8).use { it.readText() }
 }
 
 // --- JSON-Hilfen -------------------------------------------------------------

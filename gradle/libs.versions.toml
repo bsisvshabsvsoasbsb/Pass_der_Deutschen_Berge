@@ -10,6 +10,7 @@ coreKtx = "1.19.0"
 lifecycle = "2.11.0"
 datastore = "1.2.1"
 junit = "4.13.2"
+jsonJvm = "20251224"   # echtes org.json fuer JVM-Tests; android.jar liefert nur Stubs
 
 [libraries]
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -28,6 +29,7 @@ lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-
 lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+json-jvm = { group = "org.json", name = "json", version.ref = "jsonJvm" }
 
 [bundles]
 compose = ["compose-ui", "compose-ui-graphics", "compose-foundation", "compose-material3", "compose-ui-tooling-preview"]

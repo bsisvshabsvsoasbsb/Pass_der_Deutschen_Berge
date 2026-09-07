@@ -44,23 +44,6 @@ jobs:
             "platforms;android-37.2" "build-tools;37.0.0" > /dev/null || true
           ls "$ANDROID_HOME/platforms"
 
-      # Diagnose: welche compileSdk-Eigenschaften kennt diese AGP-Version?
-      # Die Minor-Version-DSL ist noch jung, ihr Name aendert sich zwischen
-      # AGP-Linien - hier steht er schwarz auf weiss.
-      - name: AGP-DSL pruefen
-        continue-on-error: true
-        run: |
-          set -uo pipefail
-          JAR=$(find ~/.gradle/caches -name 'gradle-api-*.jar' -o -name 'common-*.jar' 2>/dev/null | head -3)
-          echo "gefundene AGP-Jars: $JAR"
-          for j in $(find ~/.gradle/caches -path '*com.android.tools.build*' -name '*.jar' 2>/dev/null | head -40); do
-            if unzip -l "$j" 2>/dev/null | grep -q 'CommonExtension'; then
-              echo "== $j"
-              unzip -p "$j" 'com/android/build/api/dsl/CommonExtension.class' 2>/dev/null \
-                | strings | grep -iE 'compileSdk[A-Za-z]*' | sort -u | head -20
-            fi
-          done
-
       - name: Unit-Tests
         run: ./gradlew --no-daemon --stacktrace testDebugUnitTest
 
@@ -74,6 +57,21 @@ jobs:
       # hinterlegt ist. Ohne Secrets bleibt es beim Debug-APK - das laesst sich
       # ebenfalls per Sideload installieren, taugt aber nicht fuer Updates,
       # weil der Debug-Schluessel je Build-Maschine ein anderer ist.
+      - name: APK pruefen und benennen
+        id: apk
+        run: |
+          set -euo pipefail
+          SRC=$(find app/build/outputs/apk/debug -name '*.apk' | head -1)
+          mkdir -p dist
+          cp "$SRC" "dist/PassDerDeutschenBerge-debug.apk"
+          AAPT="$ANDROID_HOME/build-tools/37.0.0/aapt2"
+          echo "===== APK-Kenndaten ====="
+          "$AAPT" dump badging "dist/PassDerDeutschenBerge-debug.apk" \
+            | grep -E "^(package|sdkVersion|targetSdkVersion|application-label|uses-permission|native-code)" || true
+          echo "===== Enthaltene Assets ====="
+          unzip -l "dist/PassDerDeutschenBerge-debug.apk" | grep -E "assets/" || true
+          echo "size=$(du -h "dist/PassDerDeutschenBerge-debug.apk" | cut -f1)" >> "$GITHUB_OUTPUT"
+
       - name: Keystore aus Secret entpacken
         id: keystore
         if: env.HAS_KEYSTORE == 'true'
@@ -105,15 +103,55 @@ jobs:
         if: always()
         run: rm -f "${RUNNER_TEMP}/release.jks"
 
+      - name: Release-APK benennen
+        if: steps.keystore.outputs.available == 'true'
+        run: |
+          set -euo pipefail
+          SRC=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
+          cp "$SRC" "dist/PassDerDeutschenBerge.apk"
+
       - name: APK als Artefakt anhaengen
         if: always()
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: pass-der-deutschen-berge-apk
-          path: app/build/outputs/apk/**/*.apk
+          path: dist/*.apk
           if-no-files-found: warn
           retention-days: 30
+
+      # Ein Release-Asset laesst sich direkt auf dem Telefon herunterladen;
+      # Actions-Artefakte sind ZIP-Dateien hinter der GitHub-Anmeldung.
+      - name: APK als Release veroeffentlichen
+        if: ${{ success() && github.event_name == 'push' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG="app-latest"
+          if [ -f dist/PassDerDeutschenBerge.apk ]; then
+            VARIANTE="Signiertes Release-APK (eigener Keystore)."
+          else
+            VARIANTE="Debug-APK. Installierbar, aber je Build anders signiert - fuer Updates ohne Neuinstallation bitte die Keystore-Secrets hinterlegen."
+          fi
+          NOTES="Automatischer Build aus ${GITHUB_SHA::7} (${GITHUB_REF_NAME}).
+
+          ${VARIANTE}
+
+          Installation: APK auf dem Telefon herunterladen und oeffnen. Android
+          fragt einmalig nach der Berechtigung, Apps aus dieser Quelle zu
+          installieren (Einstellungen der Browser- oder Dateien-App).
+
+          Die App braucht keine Berechtigungen und arbeitet vollstaendig offline."
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release edit "$TAG" --notes "$NOTES" --prerelease
+            gh release upload "$TAG" dist/*.apk --clobber
+          else
+            gh release create "$TAG" dist/*.apk \
+              --title "Pass der Deutschen Berge - aktueller Build" \
+              --notes "$NOTES" --prerelease
+          fi
+          gh release view "$TAG" --json assets --jq '.assets[].name'
 
       - name: Testberichte bei Fehlschlag anhaengen
         if: failure()
