@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Der secrets-Kontext ist in step-level if-Bedingungen nicht erlaubt,
+    # auf Job-Ebene als env aber schon.
+    env:
+      HAS_KEYSTORE: ${{ secrets.KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -53,7 +57,7 @@ jobs:
       # weil der Debug-Schluessel je Build-Maschine ein anderer ist.
       - name: Keystore aus Secret entpacken
         id: keystore
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: env.HAS_KEYSTORE == 'true'
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
@@ -63,7 +67,7 @@ jobs:
           echo "available=true" >> "$GITHUB_OUTPUT"
 
       - name: Signiertes Release-APK bauen
-        if: ${{ steps.keystore.outputs.available == 'true' }}
+        if: steps.keystore.outputs.available == 'true'
         env:
           ORG_GRADLE_PROJECT_storeFile: ${{ runner.temp }}/release.jks
           ORG_GRADLE_PROJECT_storePassword: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -72,7 +76,7 @@ jobs:
         run: ./gradlew --no-daemon --stacktrace assembleRelease
 
       - name: Signatur pruefen
-        if: ${{ steps.keystore.outputs.available == 'true' }}
+        if: steps.keystore.outputs.available == 'true'
         run: |
           set -euo pipefail
           APK=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
