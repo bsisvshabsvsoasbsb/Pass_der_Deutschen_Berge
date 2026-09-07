@@ -1,0 +1,63 @@
+# Einmaliger Diagnose-Workflow: ermittelt auf dem Runner, welche Build- und
+# Bibliotheksversionen tatsaechlich verfuegbar sind. Google Maven ist aus der
+# Entwicklungsumgebung heraus nicht erreichbar, hier schon.
+name: Probe versions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Google Maven - verfuegbare Versionen
+        run: |
+          set -euo pipefail
+          probe() {
+            local group_path="$1" artifact="$2"
+            echo "=== ${group_path//\//.}:${artifact} ==="
+            curl -sfL "https://dl.google.com/dl/android/maven2/${group_path}/group-index.xml" \
+              | tr '>' '>\n' | grep -oE "<${artifact} versions=\"[^\"]*\"" \
+              | sed -E "s/.*versions=\"//" | tr ',' '\n' | grep -vE 'alpha|beta|rc|dev' \
+              | tail -8 || echo "  (nicht gefunden)"
+          }
+          probe com/android/tools/build gradle
+          probe androidx/compose compose-bom
+          probe androidx/compose/material3 material3
+          probe androidx/compose/ui ui
+          probe androidx/activity activity-compose
+          probe androidx/appcompat appcompat
+          probe androidx/lifecycle lifecycle-viewmodel-compose
+          probe androidx/datastore datastore-preferences
+          probe androidx/core core-ktx
+          probe androidx/navigation navigation-compose
+
+      - name: Compose BOM -> enthaltene Versionen
+        run: |
+          set -euo pipefail
+          for V in $(curl -sfL "https://dl.google.com/dl/android/maven2/androidx/compose/group-index.xml" \
+                      | tr '>' '>\n' | grep -oE '<compose-bom versions="[^"]*"' \
+                      | sed -E 's/.*versions="//' | tr ',' '\n' \
+                      | grep -vE 'alpha|beta|rc' | tail -3); do
+            echo "=== compose-bom $V ==="
+            curl -sfL "https://dl.google.com/dl/android/maven2/androidx/compose/compose-bom/$V/compose-bom-$V.pom" \
+              | grep -A2 -E '<artifactId>(ui|material3|foundation)</artifactId>' | grep -E 'artifactId|version' || true
+          done
+
+      - name: Kotlin- und Gradle-Versionen
+        run: |
+          echo "=== kotlin-gradle-plugin (stable) ==="
+          curl -sfL "https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/maven-metadata.xml" \
+            | grep -oE '<version>[^<]+' | sed 's/<version>//' | grep -vE 'Beta|RC|eap|dev|M[0-9]' | tail -6
+          echo "=== kotlin compose compiler plugin ==="
+          curl -sfL "https://repo1.maven.org/maven2/org/jetbrains/kotlin/compose-compiler-gradle-plugin/maven-metadata.xml" \
+            | grep -oE '<version>[^<]+' | sed 's/<version>//' | grep -vE 'Beta|RC|eap|dev' | tail -6
+          echo "=== Gradle current ==="
+          curl -sfL https://services.gradle.org/versions/current | head -3
+
+      - name: Vorinstalliertes Android SDK des Runners
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          ls "$ANDROID_HOME/platforms" 2>/dev/null || echo "(keine platforms)"
+          ls "$ANDROID_HOME/build-tools" 2>/dev/null || echo "(keine build-tools)"
+          java -version 2>&1 | head -2
