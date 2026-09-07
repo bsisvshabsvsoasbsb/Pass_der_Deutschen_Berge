@@ -64,11 +64,19 @@ jobs:
       - name: Unit-Tests
         run: ./gradlew --no-daemon --stacktrace testDebugUnitTest
 
+      - name: Debug-APK bauen
+        run: ./gradlew --no-daemon --stacktrace assembleDebug
+
       - name: Lint (bricht bei fehlenden Uebersetzungen)
         run: ./gradlew --no-daemon lintDebug
 
-      - name: Debug-APK bauen
-        run: ./gradlew --no-daemon --stacktrace assembleDebug
+      - name: Lint-Befunde ausgeben
+        if: failure()
+        run: |
+          for f in app/build/reports/lint-results-debug.txt app/build/reports/lint-results.txt; do
+            [ -f "$f" ] && { echo "=== $f ==="; cat "$f"; }
+          done
+          true
 
       # Release wird nur signiert gebaut, wenn ein eigener Keystore als Secret
       # hinterlegt ist. Ohne Secrets bleibt es beim Debug-APK - das laesst sich
@@ -106,11 +114,13 @@ jobs:
         run: rm -f "${RUNNER_TEMP}/release.jks"
 
       - name: APK als Artefakt anhaengen
+        if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: pass-der-deutschen-berge-apk
           path: app/build/outputs/apk/**/*.apk
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Testberichte bei Fehlschlag anhaengen

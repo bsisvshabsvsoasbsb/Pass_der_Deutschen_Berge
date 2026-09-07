@@ -84,6 +84,9 @@ android {
     lint {
         warningsAsErrors = false
         abortOnError = true
+        // Befunde direkt ins Buildprotokoll, sonst stehen sie nur im Report.
+        textReport = true
+        htmlReport = true
         // Fehlende Uebersetzungen sollen den Build brechen, nicht stillschweigend
         // auf Deutsch zurueckfallen.
         error += setOf("MissingTranslation")
