@@ -1,6 +1,8 @@
 package de.passderdeutschenberge.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -35,7 +37,11 @@ import de.passderdeutschenberge.ui.screens.RegionsOverviewScreen
 import de.passderdeutschenberge.ui.screens.SummitScreen
 import de.passderdeutschenberge.ui.screens.SummitsScreen
 
-private data class TabSpec(val tab: Tab, val labelRes: Int, val iconRes: Int)
+private data class TabSpec(
+    val tab: Tab,
+    @param:StringRes val labelRes: Int,
+    @param:DrawableRes val iconRes: Int,
+)
 
 private val TABS = listOf(
     TabSpec(Tab.MAP, R.string.tab_map, R.drawable.ic_tab_map),

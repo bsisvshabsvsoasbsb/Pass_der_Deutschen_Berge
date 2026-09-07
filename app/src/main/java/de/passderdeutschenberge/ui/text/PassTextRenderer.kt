@@ -1,5 +1,6 @@
 package de.passderdeutschenberge.ui.text
 
+import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
@@ -124,6 +125,7 @@ fun describeRegion(region: Region, macro: MacroRegion?): String {
 @Composable
 fun describeMacroRegion(macro: MacroRegion): String = characterText(macro)
 
+@StringRes
 private fun focusRes(key: String): Int = when (key) {
     "castle" -> R.string.focus_castle
     "water" -> R.string.focus_water

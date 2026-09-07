@@ -70,14 +70,6 @@ jobs:
       - name: Lint (bricht bei fehlenden Uebersetzungen)
         run: ./gradlew --no-daemon lintDebug
 
-      - name: Lint-Befunde ausgeben
-        if: failure()
-        run: |
-          for f in app/build/reports/lint-results-debug.txt app/build/reports/lint-results.txt; do
-            [ -f "$f" ] && { echo "=== $f ==="; cat "$f"; }
-          done
-          true
-
       # Release wird nur signiert gebaut, wenn ein eigener Keystore als Secret
       # hinterlegt ist. Ohne Secrets bleibt es beim Debug-APK - das laesst sich
       # ebenfalls per Sideload installieren, taugt aber nicht fuer Updates,
@@ -132,3 +124,18 @@ jobs:
             app/build/reports/**
             app/build/outputs/logs/**
           retention-days: 7
+
+      # Bewusst als letzter Schritt: so stehen die Befunde am Ende des Logs
+      # und werden nicht von der Artefakt-Ausgabe verdeckt.
+      - name: Lint-Fehler ausgeben
+        if: always()
+        run: |
+          F=app/build/reports/lint-results-debug.txt
+          if [ -f "$F" ]; then
+            echo "===== LINT: FEHLER ====="
+            grep -nE "Error: |Fehler: " "$F" | head -40 || echo "(keine Error-Zeilen)"
+            echo "===== LINT: ZUSAMMENFASSUNG ====="
+            tail -3 "$F"
+          else
+            echo "kein Lint-Textreport gefunden"
+          fi

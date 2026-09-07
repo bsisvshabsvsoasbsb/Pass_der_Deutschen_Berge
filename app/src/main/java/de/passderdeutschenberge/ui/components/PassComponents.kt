@@ -1,5 +1,7 @@
 package de.passderdeutschenberge.ui.components
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -54,7 +56,7 @@ fun SectionTitle(text: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Composable
+@DrawableRes
 fun categoryIcon(type: TargetType): Int = when (type) {
     TargetType.SUMMIT -> R.drawable.ic_cat_summit
     TargetType.PASS -> R.drawable.ic_cat_pass
@@ -65,17 +67,19 @@ fun categoryIcon(type: TargetType): Int = when (type) {
     TargetType.TRAIL -> R.drawable.ic_cat_trail
 }
 
+@StringRes
+fun categoryLabelRes(category: TargetCategory): Int = when (category) {
+    TargetCategory.CASTLE -> R.string.cat_castle
+    TargetCategory.NATURE -> R.string.cat_nature
+    TargetCategory.TRAIL -> R.string.cat_trail
+    TargetCategory.ROCK -> R.string.cat_rock
+    TargetCategory.WATER -> R.string.cat_water
+    TargetCategory.COLLECTION -> R.string.cat_collection
+}
+
 @Composable
-fun categoryLabel(category: TargetCategory): String = stringResource(
-    when (category) {
-        TargetCategory.CASTLE -> R.string.cat_castle
-        TargetCategory.NATURE -> R.string.cat_nature
-        TargetCategory.TRAIL -> R.string.cat_trail
-        TargetCategory.ROCK -> R.string.cat_rock
-        TargetCategory.WATER -> R.string.cat_water
-        TargetCategory.COLLECTION -> R.string.cat_collection
-    },
-)
+fun categoryLabel(category: TargetCategory): String =
+    stringResource(categoryLabelRes(category))
 
 /** Farbe nach Fortschritt - identisch auf Karte, Listen und Balken. */
 @Composable
@@ -114,7 +118,7 @@ fun NavigationRow(
     subtitle: String? = null,
     trailing: String? = null,
     progress: AreaProgress? = null,
-    leadingIcon: Int? = null,
+    @DrawableRes leadingIcon: Int? = null,
     onClick: () -> Unit,
 ) {
     Column(
