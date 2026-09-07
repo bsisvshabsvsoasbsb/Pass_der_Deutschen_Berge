@@ -3,8 +3,6 @@ package de.passderdeutschenberge.ui
 import android.content.ContentResolver
 import android.net.Uri
 import androidx.lifecycle.ViewModel
-import android.content.ContentResolver
-import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
