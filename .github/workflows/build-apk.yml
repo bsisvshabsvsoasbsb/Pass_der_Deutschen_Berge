@@ -24,6 +24,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Prueft gradle-wrapper.jar gegen Gradles offizielle Pruefsummenliste.
+      # Die JAR wird beim Build ausgefuehrt und ist der klassische Angriffspunkt
+      # in Gradle-Projekten - deshalb vor allem anderen.
+      - name: Gradle-Wrapper verifizieren
+        uses: gradle/actions/wrapper-validation@v4
+
+      - name: Pruefsummen protokollieren
+        run: |
+          set -euo pipefail
+          echo "gradle-wrapper.jar:      $(sha256sum gradle/wrapper/gradle-wrapper.jar | cut -d" " -f1)"
+          echo "gradle-9.6.0-bin.zip:    $(curl -sL https://services.gradle.org/distributions/gradle-9.6.0-bin.zip.sha256)"
+          echo "assets/pass_data.json:   $(sha256sum app/src/main/assets/pass_data.json | cut -d" " -f1)"
+          echo "assets/germany.json:     $(sha256sum app/src/main/assets/germany.json | cut -d" " -f1)"
+
       - name: JDK 21 einrichten
         uses: actions/setup-java@v4
         with:
